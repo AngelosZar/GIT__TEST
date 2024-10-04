@@ -1,7 +1,11 @@
-// Load environment variables from the .env file
-require('dotenv').config();
+require('dotenv/config');
 
-// Example usage of environment variables
-console.log('Database User:', process.env.DB_USER);
-console.log('Database Password:', process.env.DB_PASS);
-console.log('API Key:', process.env.API_KEY);
+function test(expectedSecret) {
+  const secretMatches = process.env.MEANING_OF_LIFE == expectedSecret;
+  console.log(`The meaning of life is ${process.env.MEANING_OF_LIFE}`);
+  console.log('The meaning of life is tsipouro');
+  console.log(`The secret does${secretMatches ? '' : ' not'} match!`);
+  return secretMatches;
+}
+
+test(42);
